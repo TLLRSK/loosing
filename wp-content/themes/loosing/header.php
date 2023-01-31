@@ -12,7 +12,7 @@
         <!-- bloginfo('stylesheet_url') lleva al archivo style.css -->
         <link rel="stylesheet" href="<?php bloginfo ( 'stylesheet_url' ); ?>">
 
-        <?php wp_head(); ?> <!-- siempre antes de cerrar head -->
+        <!-- wp_head(); siempre antes de cerrar head. Al poner function title-tag se puede borrar esto -->
 
     </head>
 
@@ -34,13 +34,7 @@
 
                 <nav>
 
-                    <ul>
-                        <li  class="you-are-here"><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="#">Shop</a></li>
-                    </ul>
+                    <?php wp_nav_menu ( array ( 'theme_location' => 'top', 'container' => false ) ); ?>
 
                 </nav>
 

@@ -16,20 +16,20 @@
                 </header>
 
                 <?php while ( have_posts() ) : the_post(); ?>
-
-                    <article>
+                    <!-- post_class mete clases al elemento article -->
+                    <article <?php post_class(); ?>>
 
                         <header>
 
                             <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
                             <?php the_excerpt(); ?>
-                            <a class="button mini" href="<?php the_permalink(); ?>">Wanna read more</a>
+                            <a class="button mini" href="<?php the_permalink(); ?>"><?php the_field ('read_more_text'); ?></a>
 
                         </header>
 
                         <figure>
 
-                            <a href="blog-the-usgs-collection-now-at-moma.html"><img src="images/placeholder-square.png" alt="Very cool and SEO friendly description"></a>
+                            <a href="<?php the_permalink() ?>"><?php the_post_thumbnail ( 'medium-large' ); ?></a>
 
                         </figure>
 

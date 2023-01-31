@@ -5,31 +5,33 @@
             <div>
 
                 <h2>Hey! Just blogged...</h2>
+                
+                <!--consulta-->
+                <?php
+                    $news = new WP_Query ( array
+                    (
+                        'post_type' => 'post',
+                        'posts_per_page' => 3,
+                    ));
+                ?>
 
-                <article>
+                <!--inicio loop-->
+                <?php while ( $news -> have_posts() ) : $news -> the_post(); ?>
 
-                    <h3><a href="blog-the-usgs-collection-not-at-moma.html">The USGS collection not at MoMA</a></h3>
-                    <time datetime="2022-11-20">25.11.2022</time>
+                <article <?php post_class(); ?>>
+
+                    <h3><a href="<?php the_permalink();?>"><?php the_title(); ?></a></h3>
+                    <!--cuidao las comillas-->
+                    <time datetime="<?php the_time ('d.m.Y'); ?>"><?php the_time ('d.m.Y'); ?></time>
 
                 </article>
 
-                <article>
-
-                    <h3><a href="blog-the-usgs-collection-not-at-moma.html">Celebrating the best of the best of Unsplash</a></h3>
-                    <time datetime="2022-11-20">16.10.2022</time>
-
-                </article>
-
-                <article>
-
-                    <h3><a href="blog-the-usgs-collection-not-at-moma.html">Andy Warhol's exhibition is a Superpop whatever</a></h3>
-                    <time datetime="2022-11-20">08.09.2022</time>
-
-                </article>
+                <!--fin loop-->
+                <?php endwhile; ?>
 
                 <div class="buttons">
                     
-                    <a href="blog.html" class="button mini">More articles here</a>
+                    <a href="<?php echo home_url ('/blog/'); ?>" class="button mini">More articles here</a>
 
                 </div>
 
@@ -43,19 +45,9 @@
 
         <?php bloginfo ( 'description' ); // Descripción corta del sitio. Previamente -> A project by Giuseppe Pepe ?>
 
-            <ul class="social">
+            <?php wp_nav_menu ( array ( 'theme_location' => 'footer-left', 'container' => false, 'menu_class' => 'left' ) ); ?>
 
-                <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
-                <li><a href="https://behance.net" target="_blank">Behancé</a></li>
-
-            </ul>
-
-            <ul class="legal">
-                
-                <li><a href="cookies.html">Terms of use</a></li>
-                <li><a href="cookies.html">Cookies</a></li>
-
-            </ul>
+            <?php wp_nav_menu ( array ( 'theme_location' => 'footer-right', 'container' => false, 'menu_class' => 'right' ) ); ?>
 
         </footer>
 

@@ -166,7 +166,7 @@ img {
 	margin-left: 1.5rem;
 }
 
-.site-header li.you-are-here a {
+.site-header li.current-menu-item a {
 	color: rgb(var(--brand-color));
 }
 
